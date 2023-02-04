@@ -99,3 +99,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 1
   moveSpeed: 0.5
+  TTL: 2

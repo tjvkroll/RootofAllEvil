@@ -61,6 +61,11 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
+    public void ApplyForce(Vector2 direction, float power)
+    {
+        m_Rigidbody2D.AddForce(direction * power);
+    }
+
 
     public void Move(float move, bool crouch, bool jump)
     {
