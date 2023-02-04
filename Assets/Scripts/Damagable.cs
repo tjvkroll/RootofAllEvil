@@ -16,23 +16,17 @@ public class Damagable : MonoBehaviour
   //     BroadcastMessage("OnTakeDamage", explosion.explosionPower, SendMessageOptions.DontRequireReceiver);
   //   }
 
-  //   private void OnTriggerEnter(Collider other)
-  //   {
-  //     if (other.CompareTag("Bullet"))
-  //     {
-  //       BulletBase bb = other.GetComponent<BulletBase>();
-  //       if (bb.isFriendly == isFriendly) { return; }
-  //       if (bb.explosive)
-  //       {
-  //         bb.CreateExplosion();
-  //         Destroy(other.gameObject);
-  //       }
-  //       if (!bb.piercing)
-  //       {
-  //         Destroy(other.gameObject);
-  //       }
-  //       BroadcastMessage("OnBulletKnockback", bb, SendMessageOptions.DontRequireReceiver);
-  //       BroadcastMessage("OnTakeDamage", bb.damage, SendMessageOptions.DontRequireReceiver);
-  //     }
-  //   }
+  private void OnTriggerEnter2D(Collider2D other)
+  {
+    Debug.Log("Triggered!");
+    if (other.CompareTag("Bullet"))
+    {
+      Debug.Log("BulleetTrigger");
+      BulletBase bb = other.GetComponent<BulletBase>();
+      if (bb.isFriendly == isFriendly) { return; }
+
+      Destroy(other.gameObject);
+      BroadcastMessage("OnTakeDamage", bb.damage, SendMessageOptions.DontRequireReceiver);
+    }
+  }
 }
