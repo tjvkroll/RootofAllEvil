@@ -24,6 +24,7 @@ public class CharacterController2D : MonoBehaviour
     [Space]
 
     public UnityEvent OnLandEvent;
+    public UnityEvent OnJumpEvent;
 
     [System.Serializable]
     public class BoolEvent : UnityEvent<bool> { }
@@ -34,6 +35,11 @@ public class CharacterController2D : MonoBehaviour
     private void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
+
+        if (OnJumpEvent == null)
+        {
+            OnJumpEvent = new UnityEvent();
+        }
 
         if (OnLandEvent == null)
             OnLandEvent = new UnityEvent();
@@ -61,11 +67,11 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
+
     public void ApplyForce(Vector2 direction, float power)
     {
         m_Rigidbody2D.AddForce(direction * power);
     }
-
 
     public void Move(float move, bool crouch, bool jump)
     {
@@ -135,6 +141,7 @@ public class CharacterController2D : MonoBehaviour
         {
             // Add a vertical force to the player.
             m_Grounded = false;
+            OnJumpEvent.Invoke();
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
         }
     }

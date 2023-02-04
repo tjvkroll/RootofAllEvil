@@ -51,7 +51,6 @@ public class CharacterObject : MonoBehaviour
         requireNewShootPress = true;
         GameObject go = Instantiate(bulletPrefab, barrelOffset.position, barrelOffset.rotation);
         BulletBase bb = go.GetComponent<BulletBase>();
-        Debug.Log(myController.FacingRight);
         bb.facingRight = myController.FacingRight;
         bulletTimer = 0;
     }
