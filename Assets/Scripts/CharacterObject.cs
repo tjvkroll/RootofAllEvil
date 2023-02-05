@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class CharacterObject : MonoBehaviour
 {
@@ -64,5 +66,10 @@ public class CharacterObject : MonoBehaviour
     BulletBase bb = go.GetComponent<BulletBase>();
     bb.facingRight = myController.FacingRight;
     bulletTimer = 0;
+  }
+
+  void OnDeath()
+  {
+    SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
   }
 }
