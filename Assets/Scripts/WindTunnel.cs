@@ -8,11 +8,11 @@ public class WindTunnel : MonoBehaviour
     public bool facingRight;
     void OnTriggerStay2D(Collider2D other)
     {
-        CharacterController2D cc = other.GetComponent<CharacterController2D>();
-        if (!cc) return;
+        CharacterObject co = other.GetComponent<CharacterObject>();
+        if (!co) return;
         Debug.Log("Trigger STay!");
         int modi = 1;
         if (!facingRight) modi = -1;
-        cc.ApplyForce(new Vector2(modi, 0), power);
+        co.ApplyForce(new Vector2(modi, 0), power);
     }
 }

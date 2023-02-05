@@ -11,6 +11,12 @@ public class BulletBase : MonoBehaviour
     void Start()
     {
         efx.Play();
+        if (!facingRight)
+        {
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            transform.localScale = theScale;
+        }
     }
 
     // Update is called once per frame
