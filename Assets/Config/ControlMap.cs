@@ -71,6 +71,15 @@ public partial class @ControlMap : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""40ad8420-1fd0-467f-8cc4-bbfd6d449bf3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -238,6 +247,28 @@ public partial class @ControlMap : IInputActionCollection2, IDisposable
                     ""action"": ""SpawnTree"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""53669204-afc3-4d3d-9643-5853dd539eb6"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a9e94ee-7525-4887-9280-cb503bb97bd5"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -257,6 +288,7 @@ public partial class @ControlMap : IInputActionCollection2, IDisposable
         m_Player_Root = m_Player.FindAction("Root", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_SpawnTree = m_Player.FindAction("SpawnTree", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -321,6 +353,7 @@ public partial class @ControlMap : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Root;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_SpawnTree;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @ControlMap m_Wrapper;
@@ -330,6 +363,7 @@ public partial class @ControlMap : IInputActionCollection2, IDisposable
         public InputAction @Root => m_Wrapper.m_Player_Root;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @SpawnTree => m_Wrapper.m_Player_SpawnTree;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -354,6 +388,9 @@ public partial class @ControlMap : IInputActionCollection2, IDisposable
                 @SpawnTree.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawnTree;
                 @SpawnTree.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawnTree;
                 @SpawnTree.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawnTree;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -373,6 +410,9 @@ public partial class @ControlMap : IInputActionCollection2, IDisposable
                 @SpawnTree.started += instance.OnSpawnTree;
                 @SpawnTree.performed += instance.OnSpawnTree;
                 @SpawnTree.canceled += instance.OnSpawnTree;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -393,5 +433,6 @@ public partial class @ControlMap : IInputActionCollection2, IDisposable
         void OnRoot(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnSpawnTree(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
