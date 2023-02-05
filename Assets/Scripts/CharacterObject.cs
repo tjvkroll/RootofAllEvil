@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class CharacterObject : MonoBehaviour
 {
@@ -116,5 +118,10 @@ public class CharacterObject : MonoBehaviour
     {
         if (isRooted) return;
         myController.ApplyForce(direction, power);
+    }
+
+    void OnDeath()
+    {
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 }
