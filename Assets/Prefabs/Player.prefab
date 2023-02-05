@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
+  newTree: 0
   isShooting: 0
   isJumping: 0
   isRooted: 0
@@ -296,6 +297,9 @@ MonoBehaviour:
   barrelOffset: {fileID: 6959255278289381641}
   fireRate: 0.1
   bulletPrefab: {fileID: 565086055205898324, guid: 4fe474f5ae778d34fac111a1e91c5439, type: 3}
+  treeBulletPrefab: {fileID: 565086055205898324, guid: 29107eb97bd50c54eb3e0b3756681bc9, type: 3}
+  treeList: []
+  maxTrees: 2
 --- !u!82 &6959255277545008626
 AudioSource:
   m_ObjectHideFlags: 0
