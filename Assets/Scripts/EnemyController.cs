@@ -32,5 +32,10 @@ public class EnemyController : MonoBehaviour
     myController.Move(targetVelocity, false, false);
   }
 
+  void OnDeath()
+  {
+    Destroy(this.gameObject);
+  }
+
 
 }
