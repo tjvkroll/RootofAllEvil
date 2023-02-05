@@ -242,12 +242,16 @@ MonoBehaviour:
   isJumping: 0
   isRooted: 0
   requireNewShootPress: 0
+  requireNewTreePress: 0
   barrelOffset: {fileID: 6959255278289381641}
   fireRate: 0.1
   bulletPrefab: {fileID: 565086055205898324, guid: 4fe474f5ae778d34fac111a1e91c5439, type: 3}
-  treeBulletPrefab: {fileID: 565086055205898324, guid: 29107eb97bd50c54eb3e0b3756681bc9, type: 3}
+  shootAnimCD: 0
+  shootAnim: 0
   treeList: []
   maxTrees: 2
+  treeBulletPrefab: {fileID: 565086055205898324, guid: 29107eb97bd50c54eb3e0b3756681bc9, type: 3}
+  anim: {fileID: 0}
 --- !u!82 &6959255277545008626
 AudioSource:
   m_ObjectHideFlags: 0
@@ -259,7 +263,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 09ff58fccac26074dbcc6ad05bd4f877, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
