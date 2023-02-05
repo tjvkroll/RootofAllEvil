@@ -10,7 +10,7 @@ public class CharacterObject : MonoBehaviour
     public float moveSpeed;
     private Vector2 leftStick;
     private Camera main_cam;
-    public bool isShooting, isJumping, isRooted, requireNewShootPress;
+    public bool newTree, isShooting, isJumping, isRooted, requireNewShootPress, requireNewTreePress;
 
     public Transform barrelOffset;
     public float fireRate;
@@ -18,6 +18,9 @@ public class CharacterObject : MonoBehaviour
     private float bulletTimer;
     public float shootAnimCD;
     public bool shootAnim;
+    public List<TreePlatform> treeList;
+    public float maxTrees;
+    public GameObject treeBulletPrefab;
 
     public Animator anim;
 
@@ -37,6 +40,8 @@ public class CharacterObject : MonoBehaviour
         controls.Player.Jump.canceled += ctx => { isJumping = false; };
         controls.Player.Root.performed += ctx => { HandleRoot(true); };
         controls.Player.Root.canceled += ctz => { HandleRoot(false); };
+        controls.Player.SpawnTree.performed += ctx => { newTree = true; };
+        controls.Player.SpawnTree.canceled += ctx => { newTree = false; requireNewTreePress = false; };
 
         main_cam = Camera.main;
         myController = GetComponent<CharacterController2D>();
@@ -61,6 +66,7 @@ public class CharacterObject : MonoBehaviour
         shootAnimCD -= 1; // Stay in the shooting pose for a bit even after shooting or between shots. 
         bulletTimer += Time.deltaTime;
         if (isShooting && !requireNewShootPress) HandleShoot();
+        if (newTree && !requireNewTreePress) HandleTreeSpawn();
         if (isRooted)
         {
             moveSpeed = 0;
@@ -98,6 +104,12 @@ public class CharacterObject : MonoBehaviour
         bb.facingRight = myController.FacingRight;
         bulletTimer = 0;
         shootAnimCD = 30;
+    }
+
+    void HandleTreeSpawn()
+    {
+        requireNewTreePress = true;
+        GameObject go = Instantiate(treeBulletPrefab, transform.position, transform.rotation);
     }
 
     public void ApplyForce(Vector2 direction, float power)
