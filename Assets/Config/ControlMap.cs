@@ -62,6 +62,15 @@ public partial class @ControlMap : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpawnTree"",
+                    ""type"": ""Button"",
+                    ""id"": ""1dcc1932-486a-44ed-a9a2-306ae91dd762"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -207,6 +216,28 @@ public partial class @ControlMap : IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""14459282-1a22-4bd1-a7d6-2e72bcd17203"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpawnTree"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""354e7c8f-3847-469c-a8ef-8a9c6d6dd9a8"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpawnTree"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -225,6 +256,7 @@ public partial class @ControlMap : IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Root = m_Player.FindAction("Root", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_SpawnTree = m_Player.FindAction("SpawnTree", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -288,6 +320,7 @@ public partial class @ControlMap : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Root;
     private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_SpawnTree;
     public struct PlayerActions
     {
         private @ControlMap m_Wrapper;
@@ -296,6 +329,7 @@ public partial class @ControlMap : IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Root => m_Wrapper.m_Player_Root;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @SpawnTree => m_Wrapper.m_Player_SpawnTree;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -317,6 +351,9 @@ public partial class @ControlMap : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @SpawnTree.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawnTree;
+                @SpawnTree.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawnTree;
+                @SpawnTree.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawnTree;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -333,6 +370,9 @@ public partial class @ControlMap : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @SpawnTree.started += instance.OnSpawnTree;
+                @SpawnTree.performed += instance.OnSpawnTree;
+                @SpawnTree.canceled += instance.OnSpawnTree;
             }
         }
     }
@@ -352,5 +392,6 @@ public partial class @ControlMap : IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnRoot(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnSpawnTree(InputAction.CallbackContext context);
     }
 }
