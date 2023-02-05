@@ -116,9 +116,11 @@ GameObject:
   - component: {fileID: 6959255277545008625}
   - component: {fileID: 6959255277545008627}
   - component: {fileID: 6959255277545008626}
+  - component: {fileID: 856084354669349384}
+  - component: {fileID: 5141356436672418227}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,6 +253,8 @@ MonoBehaviour:
   treeList: []
   maxTrees: 2
   treeBulletPrefab: {fileID: 565086055205898324, guid: 29107eb97bd50c54eb3e0b3756681bc9, type: 3}
+  animAerial: 0
+  hitstun: 0
   anim: {fileID: 0}
 --- !u!82 &6959255277545008626
 AudioSource:
@@ -348,6 +352,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &856084354669349384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959255277545008629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d42eba9f5e4f474db780e5b8654989e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 200
+  currentHP: 0
+  isInvuln: 0
+--- !u!114 &5141356436672418227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959255277545008629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 686a25551d9157240b24023b68c7dcc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFriendly: 1
 --- !u!1 &6959255277792259019
 GameObject:
   m_ObjectHideFlags: 0
