@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7387932127562829698}
   - component: {fileID: 7387932127562829699}
   - component: {fileID: 304110111079523132}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 7387932128902398349}
   - component: {fileID: 8823678139297063060}
   - component: {fileID: 8823678139297063061}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Draw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 7387932129371996787}
   - component: {fileID: 236972013245778942}
   - component: {fileID: 8823678139900879727}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
