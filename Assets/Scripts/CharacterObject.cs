@@ -24,6 +24,8 @@ public class CharacterObject : MonoBehaviour
     public float maxTrees;
     public GameObject treeBulletPrefab;
 
+    public bool animAerial;
+    public float hitstun;
     public Animator anim;
 
 
@@ -67,6 +69,7 @@ public class CharacterObject : MonoBehaviour
     {
         shootAnimCD -= 1; // Stay in the shooting pose for a bit even after shooting or between shots. 
         bulletTimer += Time.deltaTime;
+        if (hitstun > -1) hitstun -= 1;
         if (isShooting && !requireNewShootPress) HandleShoot();
         if (newTree && !requireNewTreePress) HandleTreeSpawn();
         if (isRooted)
@@ -94,6 +97,8 @@ public class CharacterObject : MonoBehaviour
         anim.SetFloat("Speed", Mathf.Abs(leftStick.x * moveSpeed));
         anim.SetBool("Rooted", isRooted);
         anim.SetBool("Shooting", shootAnim);
+        anim.SetBool("Aerial", !myController.Grounded);
+        anim.SetBool("Hitstun", hitstun > 0);
     }
 
     void HandleShoot()
@@ -120,8 +125,20 @@ public class CharacterObject : MonoBehaviour
         myController.ApplyForce(direction, power);
     }
 
-    void OnDeath()
+    public void OnTakeDamage(float dummy)
     {
+        hitstun = 10;
+    }
+
+    public void OnDeath()
+    {
+        StartCoroutine("RestartCoRout");
+    }
+
+    IEnumerator RestartCoRout()
+    {
+        anim.SetTrigger("Death");
+        yield return new WaitForSecondsRealtime(.8f);
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 }
