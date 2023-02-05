@@ -33,6 +33,10 @@ public class CharacterObject : MonoBehaviour
 
     void OnDisable() { controls.Disable(); }
 
+    void Start()
+    {
+    }
+
     void Awake()
     {
         controls = new ControlMap();
@@ -138,7 +142,10 @@ public class CharacterObject : MonoBehaviour
     IEnumerator RestartCoRout()
     {
         anim.SetTrigger("Death");
+        myController.m_Rigidbody2D.isKinematic = false;
         yield return new WaitForSecondsRealtime(.8f);
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        myController.m_Rigidbody2D.isKinematic = true;
+
     }
 }

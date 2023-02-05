@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 3530222169460138652}
   - component: {fileID: 7510926418818927895}
   - component: {fileID: -6235807377847159172}
+  - component: {fileID: 434419253}
   m_Layer: 0
   m_Name: Catapillar
   m_TagString: Enemy
@@ -233,7 +234,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.8018868, g: 0.31282082, b: 0.049172327, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -284,6 +285,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 3056158955727137974}
   m_CeilingCheck: {fileID: 3056158955693919006}
   m_CrouchDisableCollider: {fileID: 0}
+  m_Rigidbody2D: {fileID: 0}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -354,6 +356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 200
   currentHP: 0
+  isInvuln: 0
 --- !u!114 &5359534615825792211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,3 +451,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.5}
   m_EdgeRadius: 0
+--- !u!95 &434419253
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3056158955880912763}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 87dadcee2c94eca48beba74378bf4366, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
