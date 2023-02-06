@@ -205,6 +205,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 6959255278118749648}
   m_CeilingCheck: {fileID: 6959255277996258089}
   m_CrouchDisableCollider: {fileID: 0}
+  m_Rigidbody2D: {fileID: 6959255277545008624}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
